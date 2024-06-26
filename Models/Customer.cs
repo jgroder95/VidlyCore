@@ -13,6 +13,7 @@ namespace VidlyCore.Models
         [Min18YearsIfAMember]
         public DateTime? BirthDate { get; set; }
         [ForeignKey("MembershipTypeId")]
+        [Display(Name = "Membership Type")]
         public int MembershipTypeId { get; set; }
         public MembershipType MembershipType { get; set; }
         

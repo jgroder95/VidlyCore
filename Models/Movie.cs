@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VidlyCore.Models
 {
@@ -16,5 +17,9 @@ namespace VidlyCore.Models
         [Display(Name = "Number of movies in stock")]
         [Range(1, 20)]
         public int NumberOfMoviesInStock { get; set; }
+        [ForeignKey("GenreTypeId")]
+        [Display(Name = "Genre Type")]
+        public int GenreTypeId { get; set; }
+        public GenreType GenreType { get; set; }
     }
 }

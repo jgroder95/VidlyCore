@@ -61,9 +61,9 @@ namespace VidlyCore.Controllers
                 var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
 
                 customerInDb.Name = customer.Name;
-                customerInDb.MembershipType = customer.MembershipType;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
                 customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
-                customer.BirthDate = customer.BirthDate;
+                customerInDb.BirthDate = customer.BirthDate;
             }
 
 
