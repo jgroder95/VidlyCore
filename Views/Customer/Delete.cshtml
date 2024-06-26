@@ -1,0 +1,40 @@
+﻿@model VidlyCore.ViewModels.CustomerViewModel
+
+<html>
+<!--RENTALS = basic customer and customer inputs to rent customers with table underneath to show who rented that customer and the customer they rented, and a way to setup days to return it. -->
+<body>
+    <h2>Delete customer</h2>
+    <b style="color:red;">Are you sure you want to delete this customer?</b>
+    @using (Html.BeginForm("Delete", "customer"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(c => c.Customer.Name)
+            @Html.TextBoxFor(c => c.Customer.Name, new { @class = "form-control", @readonly = true })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.Customer.MembershipTypeId)
+            @Html.DropDownListFor(c => c.Customer.MembershipTypeId, new SelectList(Model.MembershipType, "Id", "Name"), "please select a membership type", new { @class = "form-control", @readonly = true })
+
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.Customer.BirthDate)
+            @Html.TextBoxFor(c => c.Customer.BirthDate, "{0:d MMM yyyy}", new { @class = "form-control", @readonly = true })
+
+        </div>
+
+        <div class="form-group">
+            @Html.CheckBoxFor(c => c.Customer.IsSubscribedToNewsletter)
+            <label class="form-check-label">Subscribe to our newsletter</label>
+        </div>
+
+        @Html.HiddenFor(c => c.Customer.Id)
+        @Html.AntiForgeryToken()
+
+        <button type="submit" class="btn btn-danger" style="margin-top: 1vh">Delete</button>
+    }
+</body>
+</html>
