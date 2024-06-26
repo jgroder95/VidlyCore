@@ -38,7 +38,8 @@ namespace VidlyCore.Controllers
             };
             return View("CustomerForm", customerViewModel);
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
@@ -95,6 +96,7 @@ namespace VidlyCore.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Delete(CustomerViewModel viewModel)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == viewModel.Customer.Id);
